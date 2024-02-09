@@ -47,3 +47,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('meuForm'); 
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Impede o envio do formulário
+
+        // Lê os valores do formulário
+        var itemName = document.getElementById('itemName').value;
+        var unidadeMedida = document.getElementById('unidadeMedida').value;
+        var qtd = document.getElementById('qtd').value;
+        var price = document.getElementById('price').value;
+        var produtoPerecivel = document.querySelector('input[name="radio"]:checked').value;
+        var dataValidade = document.getElementById('dataValidade').value;
+        var dataFabricacao = document.getElementById('dataFabricacao').value;
+
+        // Cria um objeto com os dados
+        var formData = {
+            itemName,
+            unidadeMedida,
+            qtd,
+            price,
+            produtoPerecivel,
+            dataValidade,
+            dataFabricacao
+        };
+
+        // Salva os dados no localStorage
+        // Utilize JSON.stringify para converter o objeto em uma string para armazenamento
+        localStorage.setItem('formData', JSON.stringify(formData));
+
+        // Opcional: Feedback para o usuário ou redirecionamento
+        alert('Dados salvos com sucesso!');
+    });
+});
