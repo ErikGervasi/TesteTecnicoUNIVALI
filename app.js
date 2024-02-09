@@ -47,3 +47,50 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('meuForm'); 
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); 
+
+        // Lê os valores do formulário
+        var itemName = document.getElementById('itemName').value;
+        var unidadeMedida = document.getElementById('unidadeMedida').value;
+        var qtd = document.getElementById('qtd').value;
+        var price = document.getElementById('price').value;
+        var produtoPerecivel = document.querySelector('input[name="radio"]:checked').value;
+        var dataValidade = document.getElementById('dataValidade').value;
+        var dataFabricacao = document.getElementById('dataFabricacao').value;
+
+        var formData = {
+            itemName,
+            unidadeMedida,
+            qtd,
+            price,
+            produtoPerecivel,
+            dataValidade,
+            dataFabricacao
+        };
+
+        // Salva os dados no localStorage
+        localStorage.setItem('formData', JSON.stringify(formData));
+        alert('Dados salvos com sucesso!');
+    });
+});
+
+
+
+//Validações
+function validation(){
+    var nome = document.getElementById("itemName");
+
+    if (nome.value.length >= 50){
+        alert("Tamanho máximo de 50 caracteres");
+    }
+}
+
+//ver lista através do botão
+function redirect() {
+    window.location.href = "list.html";
+}
