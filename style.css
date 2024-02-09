@@ -1,18 +1,20 @@
 body{
     background-color: rgb(255, 255, 255);
-    font-family:sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .imgUnivali {
-    width: 10%;
-    height: 20%;
+    width: 180px;
+    height: 180px;
     border-radius: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 80px;
 }
 
 @media only screen and (max-width: 768px) {
     .imgUnivali {
-        width: 50%;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        width: 180px;
         height: auto; /* Mantém a proporção original */
     }
 }
@@ -40,14 +42,22 @@ body{
     color: rgb(18, 18, 19);
 }
 
-.button{
+.button {
     background-color: rgb(0, 79, 146);
     color: white;
     border-radius: 16px;
-    padding: 10px;
-    margin-left: 200px;
-
+    padding: 10px 20px 10px 20px;
+    margin: auto; /* Adiciona margem superior e inferior automaticamente e alinha horizontalmente */
+    display: block; /* Garante que o botão seja exibido como um bloco */
 }
+
+/* Para centralizar no mobile */
+@media only screen and (max-width: 768px) {
+    .button {
+        width: 50%; /* Define a largura do botão */
+    }
+}
+
 .qtd,
 .itemName,
 .unidadeMedida,
@@ -57,19 +67,25 @@ body{
     border-radius: 7px;
     font-size: 20px;
     padding-left: 10px;
-    height: 2em;
+    height: 1.4em;
 }
 
 .unidadeMedida{
-    width: 20%; /* Define a largura em relação ao elemento pai */
+    width: 22%; /* Define a largura em relação ao elemento pai */
+    height: 1.8em;
 }
 
 .qtd{
-    width: 10%; /* Define a largura em relação ao elemento pai */
+    width: 20%; /* Define a largura em relação ao elemento pai */
 }
 
 .price{
- width: 15%;
+ width: 20%;
+}
+
+.radio{
+    width: 1.5em;
+    height: 1.3em;
 }
 
 #dataValidadeContainer{
