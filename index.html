@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESTE UNIVALI</title>
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="Logo Univali.png" class="imgUnivali">
+        <div class="glass-background">
+            <form action="cadastro">
+                <p> Nome do item: <input type="text" name="itemName" id="itemName" class="itemName" required> </p>
+                <p> Unidade de medida:
+                    <select name="unidadeMedida" id="unidadeMedida" class="unidadeMedida" required>
+                        <option value="" disabled selected>Selecione a unidade de medida</option>
+                        <option value="KG">KG</option>
+                        <option value="UN">UN</option>
+                        <option value="LT">LT</option>
+                    </select>
+                </p>
+                <p id="quantidadeContainer"> Quantidade: <input type="text" name="qtd" id="qtd" class="qtd"> <span id="unidadeMedidaAddon"></span></p>
+                <p> Preço: <input type="number" name="price" id="price" class="price" required> </p>
+                <p> O produto é perecivel?         
+                    <input type="radio" id="sim" name="radio" value="sim" class="radio" required>
+                    <label for="sim">Sim</label>
+                    <input type="radio" id="nao" name="radio" value="nao" class="radio">
+                    <label for="nao">Não</label>
+                </p>
+                <p id="dataValidadeContainer"> Data de validade: <input type="date" name="dataValidade" id="dataValidade" class="dataValidade"> </p>
+                <p> Data de fabricação: <input type="date" name="dataFabricacao" id="dataFabricacao" class="dataFabricacao"> </p>
+                <button type="submit" class="button">Enviar</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

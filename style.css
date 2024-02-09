@@ -1,0 +1,77 @@
+body{
+    background-color: rgb(255, 255, 255);
+    font-family:sans-serif;
+}
+
+.imgUnivali {
+    width: 10%;
+    height: 20%;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .imgUnivali {
+        width: 50%;
+        height: auto; /* Mantém a proporção original */
+    }
+}
+
+.container {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    height: 100vh; /* Utiliza toda a altura da viewport */
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+    
+}
+
+.glass-background{
+    background: rgba(85, 84, 84, 0.29);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    color: rgb(18, 18, 19);
+}
+
+.button{
+    background-color: rgb(0, 79, 146);
+    color: white;
+    border-radius: 16px;
+    padding: 10px;
+    margin-left: 200px;
+
+}
+.qtd,
+.itemName,
+.unidadeMedida,
+.price,
+.dataValidade,
+.dataFabricacao{
+    border-radius: 7px;
+    font-size: 20px;
+    padding-left: 10px;
+    height: 2em;
+}
+
+.unidadeMedida{
+    width: 20%; /* Define a largura em relação ao elemento pai */
+}
+
+.qtd{
+    width: 10%; /* Define a largura em relação ao elemento pai */
+}
+
+.price{
+ width: 15%;
+}
+
+#dataValidadeContainer{
+    display: none;
+}
