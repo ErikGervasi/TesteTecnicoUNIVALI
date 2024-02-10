@@ -1,0 +1,74 @@
+nav.menu-lateral {
+    width: 120px;
+    height: 100vh;
+    background-color: #000000cb;
+    padding: 30vh 0 0 0.01%;
+    box-shadow: 3px 0 0 rgb(37, 39, 187);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    overflow: hidden;
+    transition: 0.4s;
+
+    opacity: 0.9;
+}
+
+nav.menu-lateral:hover {
+    width: 400px;
+}
+
+ul {
+    height: 100%;
+    list-style-type: none;
+}
+
+ul li.item-menu {
+    transition: 0.5s;
+}
+
+ul li.item-menu:hover {
+    background-color: rgb(37, 39, 187)
+}
+
+ul li.item-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px 5% 10px 15px;
+    display: flex;
+    line-height: 40px;
+}
+
+ul li.item-menu a:hover {
+    color: white;
+    
+    font-weight: bolder;
+}
+
+ul li.item-menu a .txt-link {
+    margin-left: 35px;
+}
+
+ul li.item-menu a .icon > i {
+    font-size: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+
+    nav.menu-lateral {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 20px 0;
+    }
+
+    nav.menu-lateral:hover {
+        width: 100%;
+    }
+
+    nav.menu-lateral {
+        display: none;
+    }
+}

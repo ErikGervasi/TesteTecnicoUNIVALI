@@ -73,8 +73,15 @@ document.addEventListener('DOMContentLoaded', function() {
             dataFabricacao
         };
 
-        // Salva os dados no localStorage
-        localStorage.setItem('formData', JSON.stringify(formData));
+        var existingData = JSON.parse(localStorage.getItem('formData'));
+
+        if (!existingData) {
+            existingData = [];
+        }
+        existingData.push(formData);
+
+        localStorage.setItem('formData', JSON.stringify(existingData));
+        
         alert('Dados salvos com sucesso!');
     });
 });

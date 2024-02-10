@@ -1,0 +1,16 @@
+.button {
+    font-size: 20px;
+    background-color: rgb(37, 39, 187);
+    color: white;
+    border-radius: 12px;
+    padding: 10px 20px 10px 20px;
+    display: block;
+    margin: 10%;
+
+    
+}
+
+.buttonContainer {
+    display: flex;
+    
+}
