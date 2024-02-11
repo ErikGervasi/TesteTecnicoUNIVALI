@@ -24,8 +24,27 @@
 }
 
 .records tr:hover{
-    background-color: orange;
+    background-color: rgb(37, 39, 187);
+    color: white;
 }
+
+.btnDelete{
+    background-color: red;
+    color: white;
+    width: 4em;
+    height: 3em;
+    border-radius: 8px;
+}
+
+.btnEdit{
+    background-color: green;
+    color: white;
+    margin-right: 10px;
+    width: 4em;
+    height: 3em;
+    border-radius: 8px;
+}
+
 
 @media(max-width:480px){
     .records{
@@ -50,4 +69,17 @@
     .records tr:hover{
         background-color: inherit;
     }
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+th {
+    background-color: #f2f2f2;
 }
