@@ -11,7 +11,7 @@ body::after {
 }
 
 body{
-    background-image: url(/images/6412173.jpg);
+    background-image: url(/images/Background.jpg);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
