@@ -1,8 +1,10 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     var simRadio = document.getElementById('sim');
     var dataValidadeContainer = document.getElementById('dataValidadeContainer');
     var dataValidadeInput = document.getElementById('dataValidade');
 
+    // Mostra ou esconde o campo de data de validade com base na seleção do rádio
     simRadio.addEventListener('change', function() {
         dataValidadeInput.required = simRadio.checked;
         dataValidadeContainer.style.display = simRadio.checked ? 'block' : 'none';
@@ -15,11 +17,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Atualiza a unidade de medida e a máscara do campo de quantidade utilizando inputmask e jquery
 document.addEventListener('DOMContentLoaded', function() {
     var unidadeMedidaSelect = document.getElementById('unidadeMedida');
     var unidadeMedidaAddon = document.getElementById('unidadeMedidaAddon');
     var qtdInput = document.getElementById('qtd');
 
+    
     unidadeMedidaSelect.addEventListener('change', function() {
         var unidadeMedida = unidadeMedidaSelect.value;
         var unidades = { 'KG': 'Kg', 'UN': 'Un', 'LT': 'Lt' };
@@ -51,9 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+
 document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('meuForm');
 
+    // Salva os dados do formulário no localStorage
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -79,9 +86,11 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('formData', JSON.stringify(existingData));
 
         alert('Dados salvos com sucesso!');
+        
     });
 });
 
+// Extrai parâmetros da URL
 function getQueryParam(param) {
     var search = window.location.search.substring(1);
     var params = search.split("&");
@@ -101,6 +110,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (existingData) {
             var itemToEdit = existingData.find(item => item.itemName === editItemName);
             if (itemToEdit) {
+                console.log('Item a ser editado:', itemToEdit);
+
+                // Marca o input de rádio correspondente ao valor do item
                 var produtoPerecivelRadio = document.querySelector('input[name="radio"][value="' + itemToEdit.produtoPerecivel + '"]');
                 if (produtoPerecivelRadio) {
                     produtoPerecivelRadio.checked = true;
@@ -120,17 +132,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Adiciona uma linha à tabela com os dados do item
 function adicionarLinhaTabela(item) {
     var tableBody = document.querySelector('#tabela tbody');
     var row = tableBody.insertRow();
 
-    row.insertCell().textContent = item.itemName;
-    row.insertCell().textContent = item.qtd; 
-    row.insertCell().textContent = item.unidadeMedida; 
-    row.insertCell().textContent = item.price;
-    row.insertCell().textContent = item.produtoPerecivel;
-    row.insertCell().textContent = formatarData(item.dataValidade); 
-    row.insertCell().textContent = formatarData(item.dataFabricacao);
+     row.insertCell().textContent = item.itemName;
+     row.insertCell().textContent = item.qtd; 
+     row.insertCell().textContent = item.unidadeMedida; 
+     row.insertCell().textContent = item.price;
+     row.insertCell().textContent = item.produtoPerecivel;
+     row.insertCell().textContent = formatarData(item.dataValidade); // Formatando a data de validade
+     row.insertCell().textContent = formatarData(item.dataFabricacao); // Formatando a data de fabricação
 
     var cell = row.insertCell();
     var editarButton = document.createElement('button');
@@ -151,22 +164,29 @@ function adicionarLinhaTabela(item) {
                 existingData.splice(index, 1);
                 localStorage.setItem('formData', JSON.stringify(existingData));
                 row.remove();
+                Swal.fire({
+                    title: 'Sucesso!',
+                    text: 'O item foi REMOVIDO da lista!',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  });
             }
+
         }
     };
     cell.appendChild(editarButton);
     cell.appendChild(excluirButton);
 }
-
 function formatarData(data) {
     var partesData = data.split('-');
     if (partesData.length === 3) {
         return partesData[2] + '/' + partesData[1] + '/' + partesData[0];
     } else {
-        return data; 
+        return data; // Retorna a data original se não estiver no formato esperado
     }
 }
 
+// Popula a tabela com os dados armazenados
 function popularTabela() {
     var existingData = JSON.parse(localStorage.getItem('formData'));
     if (existingData) {
@@ -176,6 +196,7 @@ function popularTabela() {
 
 document.addEventListener('DOMContentLoaded', popularTabela);
 
+// Validação do formulário
 function validation() {
     var nome = document.getElementById("itemName");
     if (nome.value.length >= 50) {
@@ -183,22 +204,29 @@ function validation() {
     }
 }
 
+// Redirecionamento para a lista de itens
 function redirect() {
     window.location.href = "list.html";
 }
 
 document.getElementById('price').addEventListener('input', function(event) {
-    var value = event.target.value.replace(/\D/g, ''); 
+    var value = event.target.value.replace(/\D/g, ''); // Remove todos os caracteres que não são dígitos
     var formattedValue = '';
 
+    // Adiciona um zero à esquerda se o valor for vazio ou começar com um ponto decimal
     if (value === '' || value === '.') {
         formattedValue = 'R$ 0,00';
     } else {
+        // Obtém a parte inteira e decimal do valor
         var integerPart = value.slice(0, -2);
         var decimalPart = value.slice(-2);
 
+        // Formata a parte inteira com separadores de milhares
         formattedValue = 'R$ ' + integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + decimalPart;
     }
 
+    // Atualiza o valor do campo
     event.target.value = formattedValue;
 });
+
+
