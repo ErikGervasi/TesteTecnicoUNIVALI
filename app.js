@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('formData', JSON.stringify(existingData));
 
         alert('Dados salvos com sucesso!');
+        
     });
 });
 
@@ -109,10 +110,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (existingData) {
             var itemToEdit = existingData.find(item => item.itemName === editItemName);
             if (itemToEdit) {
+                console.log('Item a ser editado:', itemToEdit);
+
+                // Marca o input de rádio correspondente ao valor do item
+                var produtoPerecivelRadio = document.querySelector('input[name="radio"][value="' + itemToEdit.produtoPerecivel + '"]');
+                if (produtoPerecivelRadio) {
+                    produtoPerecivelRadio.checked = true;
+                }
                 for (var key in itemToEdit) {
                     var input = document.getElementById(key);
-                    if (input) {
-                        input.value = itemToEdit[key];
+                    if (input && input.type !== 'radio') {
+                        if (input.type === 'text' || input.type === 'select-one' || input.type === 'date') {
+                            input.value = itemToEdit[key];
+                        }
                     }
                 }
 
@@ -154,7 +164,15 @@ function adicionarLinhaTabela(item) {
                 existingData.splice(index, 1);
                 localStorage.setItem('formData', JSON.stringify(existingData));
                 row.remove();
+
+                Swal.fire({
+                    title: 'Sucesso!',
+                    text: 'O item foi REMOVIDO da lista!',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  });
             }
+
         }
     };
     cell.appendChild(editarButton);
@@ -192,16 +210,24 @@ function redirect() {
     window.location.href = "list.html";
 }
 
-// Validação do campo de preco utilizando inputmask e JQuery
-$(document).ready(function () {
-    $('#price').inputmask('currency', {
-        radixPoint: ',',
-        groupSeparator: '.',
-        prefix: 'R$ ',
-        alias: 'numeric',
-        autoGroup: true,
-        digits: 2,
-        digitsOptional: false,
-        placeholder: '0'
-    });
+document.getElementById('price').addEventListener('input', function(event) {
+    var value = event.target.value.replace(/\D/g, ''); // Remove todos os caracteres que não são dígitos
+    var formattedValue = '';
+
+    // Adiciona um zero à esquerda se o valor for vazio ou começar com um ponto decimal
+    if (value === '' || value === '.') {
+        formattedValue = 'R$ 0,00';
+    } else {
+        // Obtém a parte inteira e decimal do valor
+        var integerPart = value.slice(0, -2);
+        var decimalPart = value.slice(-2);
+
+        // Formata a parte inteira com separadores de milhares
+        formattedValue = 'R$ ' + integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + decimalPart;
+    }
+
+    // Atualiza o valor do campo
+    event.target.value = formattedValue;
 });
+
+
