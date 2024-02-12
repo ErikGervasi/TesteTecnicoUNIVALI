@@ -1,4 +1,4 @@
-body{
+body {
     background-image: url(background.jpg);
     background-color: rgb(255, 255, 255);
     font-family: 'Poppins', sans-serif;
@@ -6,35 +6,35 @@ body{
 }
 
 .imgUnivali {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     border-radius: 30px;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
+/* Estilos para a classe .imgUnivali em telas menores que 768px */
 @media only screen and (max-width: 768px) {
     .imgUnivali {
-        margin-top: 30px;
+        margin-top: 40px;
         margin-bottom: 20px;
         width: 180px;
-        height: auto; /* Mantém a proporção original */
-        
+        height: auto; /* Mantém a proporção da imagem */
     }
 }
 
 .container {
     font-size: 20px;
     color: rgb(0, 0, 0);
-    height: 100vh; /* Utiliza toda a altura da viewport */
+    height: 100vh; /* Ocupa toda a altura da tela */
     margin: 0;
     display: flex;
-    flex-direction: column; /* Empilha os itens verticalmente */
-    justify-content: center; /* Centraliza os itens horizontalmente */
-    align-items: center; /* Centraliza os itens verticalmente */
-    
+    flex-direction: column; /* Itens dispostos verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
 }
 
-.glass-background{
+.glass-background {
     background: rgba(247, 240, 240, 0.29);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -43,14 +43,16 @@ body{
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 30px;
     color: rgb(25, 25, 26);
+    margin-bottom: 40px;
 }
 
+/* Estilos para campos de input */
 .qtd,
 .itemName,
 .unidadeMedida,
 .price,
 .dataValidade,
-.dataFabricacao{
+.dataFabricacao {
     border-radius: 7px;
     font-size: 20px;
     padding-left: 10px;
@@ -58,28 +60,25 @@ body{
     background-color: rgb(205, 207, 209);
 }
 
-.unidadeMedida{
-    width: 22%; /* Define a largura em relação ao elemento pai */
+.unidadeMedida {
+    width: 22%; /* Largura relativa ao elemento pai */
     height: 1.8em;
 }
 
-.qtd{
-    width: 20%; /* Define a largura em relação ao elemento pai */
+.qtd {
+    width: 20%; /* Largura relativa ao elemento pai */
 }
 
-.price{
+.price {
  width: 30%;
 }
 
-.radio{
+.radio {
     width: 1.5em;
     height: 1.3em;
     background-color: rgb(205, 207, 209);
 }
 
-#dataValidadeContainer{
+#dataValidadeContainer {
     display: none;
 }
-
-
-

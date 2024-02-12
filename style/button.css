@@ -3,25 +3,67 @@
     background-color: #2527bb;
     color: white;
     border-radius: 12px;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 20px;
     display: block;
-    margin: 10%;
-
-    
+    margin: 10% auto;
+    margin-bottom: 5px;
 }
 
 .buttonContainer {
     display: flex;
-    
 }
+
 .btnContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vh;
+    width: 100%;
     margin-top: 5%;
 }
 
-.button:hover{
-background-color: rgb(2, 2, 66);
+.button:hover {
+    background-color: rgb(2, 2, 66);
+}
+
+.btnDelete {
+    background-color: red;
+    color: white;
+    width: 4em;
+    height: 3em;
+    border-radius: 8px;
+}
+
+.btnEdit {
+    background-color: green;
+    color: white;
+    margin-right: 10px;
+    width: 4em;
+    height: 3em;
+    border-radius: 8px;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 480px) {
+    .button {
+        font-size: 16px; 
+        padding: 8px 16px; 
+        margin: 5% auto; 
+    }
+
+    .btnDelete, .btnEdit {
+        width: 3em; 
+        height: 2.5em; 
+        font-size: 14px; 
+        margin: 5px; 
+    }
+
+    .buttonContainer, .btnContainer {
+        flex-direction: column; 
+        align-items: stretch; 
+    }
+
+    .btnEdit {
+        margin-right: 0; 
+        margin-bottom: 10px; 
+    }
 }
