@@ -30,7 +30,7 @@
 
 /* Altera o estilo da linha ao passar o mouse */
 .records tr:hover{
-    background-color: rgb(37, 39, 187);
+    background-color: rgb(2, 2, 66);
     color: white;
 }
 
